@@ -1,20 +1,35 @@
 const tg = window.Telegram.WebApp;
 tg.ready();
 
-setTimeout(()=>{
-  document.getElementById("loader").style.display="none";
+setTimeout(() => {
+  document.getElementById("splash").classList.add("hidden");
   document.getElementById("app").classList.remove("hidden");
-},1000);
+}, 1200);
 
-function openPage(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
+const API = "https://api.nataobao.ru"; // твой backend
+const user = tg.initDataUnsafe.user;
+
+document.getElementById("userName").innerText = user.first_name;
+
+function go(page) {
+  document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
+  document.getElementById(page).classList.remove("hidden");
+
+  document.querySelectorAll(".tabbar button").forEach(b => b.classList.remove("active"));
+  event.target.classList.add("active");
 }
 
-document.getElementById("profile").innerHTML =
-  `<h2>👤 Профиль</h2>
-   <p>Имя: ${tg.initDataUnsafe.user.first_name}</p>`;
+// Загрузка данных
+fetch(`${API}/me/${user.id}`)
+  .then(r => r.json())
+  .then(u => fetch(`${API}/parcels/${u.code}`))
+  .then(r => r.json())
+  .then(list => {
 
-document.getElementById("support").innerHTML =
-  `<h2>💬 Поддержка</h2>
-   <a href="https://t.me/YOUR_SUPPORT" target="_blank">Написать</a>`;
+    document.getElementById("parcelCount").innerText = list.length;
+
+    let sum = 0;
+    const box = document.getElementById("parcelList");
+
+    list.forEach(p => {
+      if (p.status === "pay" && p.
