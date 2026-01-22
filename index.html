@@ -2,42 +2,60 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Nataobao</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nataobao</title>
 <link rel="stylesheet" href="style.css">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
 
-<div id="loader">
-  <h1>Nataobao</h1>
-  <div class="spinner"></div>
+<!-- SPLASH -->
+<div id="splash" class="splash">
+  <div class="brand">Nataobao</div>
+  <div class="loader"></div>
 </div>
 
+<!-- APP -->
 <div id="app" class="hidden">
-  <aside class="sidebar">
-    <button onclick="openPage('profile')">👤 Профиль</button>
-    <button onclick="openPage('parcels')">📦 Мои доставки</button>
-    <button onclick="openPage('support')">💬 Поддержка</button>
 
-    <div id="operator" class="hidden">
-      <button onclick="openPage('weigh')">⚖️ Взвесить</button>
+  <!-- HEADER -->
+  <header class="top">
+    <div>
+      <div class="hello">Добро пожаловать</div>
+      <div class="name" id="userName">—</div>
+    </div>
+    <div class="avatar">👤</div>
+  </header>
+
+  <!-- HOME -->
+  <section id="home" class="page">
+
+    <!-- BALANCE CARD -->
+    <div class="balance-card">
+      <div class="balance-title">К оплате</div>
+      <div class="balance-amount" id="toPay">— ₽</div>
+      <div class="balance-sub">Всего активных доставок</div>
+      <div class="balance-count" id="parcelCount">—</div>
     </div>
 
-    <div id="admin" class="hidden">
-      <button onclick="openPage('settings')">⚙️ Настройки</button>
-      <button onclick="openPage('excel')">📥 Excel</button>
-    </div>
-  </aside>
+    <!-- PARCELS -->
+    <div id="parcelList"></div>
 
-  <main class="content">
-    <div id="profile" class="page"></div>
-    <div id="parcels" class="page hidden"></div>
-    <div id="support" class="page hidden"></div>
-    <div id="weigh" class="page hidden"></div>
-    <div id="settings" class="page hidden"></div>
-    <div id="excel" class="page hidden"></div>
-  </main>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile" class="page hidden"></section>
+
+  <!-- SUPPORT -->
+  <section id="support" class="page hidden"></section>
+
+  <!-- TABBAR -->
+  <nav class="tabbar">
+    <button onclick="go('home')" class="active">🏠</button>
+    <button onclick="go('profile')">👤</button>
+    <button onclick="go('support')">💬</button>
+  </nav>
+
 </div>
 
 <script src="app.js"></script>
