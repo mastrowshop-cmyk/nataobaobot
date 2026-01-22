@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Nataobao</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+<div id="loader">
+  <h1>Nataobao</h1>
+  <div class="spinner"></div>
+</div>
+
+<div id="app" class="hidden">
+  <aside class="sidebar">
+    <button onclick="openPage('profile')">👤 Профиль</button>
+    <button onclick="openPage('parcels')">📦 Мои доставки</button>
+    <button onclick="openPage('support')">💬 Поддержка</button>
+
+    <div id="operator" class="hidden">
+      <button onclick="openPage('weigh')">⚖️ Взвесить</button>
+    </div>
+
+    <div id="admin" class="hidden">
+      <button onclick="openPage('settings')">⚙️ Настройки</button>
+      <button onclick="openPage('excel')">📥 Excel</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div id="profile" class="page"></div>
+    <div id="parcels" class="page hidden"></div>
+    <div id="support" class="page hidden"></div>
+    <div id="weigh" class="page hidden"></div>
+    <div id="settings" class="page hidden"></div>
+    <div id="excel" class="page hidden"></div>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
