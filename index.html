@@ -1,63 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nataobao</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nataobao</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-
-<!-- SPLASH -->
-<div id="splash" class="splash">
-  <div class="brand">Nataobao</div>
-  <div class="loader"></div>
-</div>
-
-<!-- APP -->
-<div id="app" class="hidden">
-
-  <!-- HEADER -->
-  <header class="top">
-    <div>
-      <div class="hello">Добро пожаловать</div>
-      <div class="name" id="userName">—</div>
+  <!-- SPLASH -->
+  <div id="splash" class="splash">
+    <div class="brand">
+      <div class="brand-logo">N</div>
+      <div>
+        <div class="brand-name">Nataobao</div>
+        <div class="brand-sub">Доставка из Китая в Россию</div>
+      </div>
     </div>
-    <div class="avatar">👤</div>
-  </header>
+    <div class="spinner"></div>
+    <div class="splash-text" id="splashText">Загрузка…</div>
+  </div>
 
-  <!-- HOME -->
-  <section id="home" class="page">
+  <!-- APP -->
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="sb-top">
+        <div class="sb-title">Nataobao</div>
+        <div class="sb-user" id="sbUser">—</div>
+      </div>
 
-    <!-- BALANCE CARD -->
-    <div class="balance-card">
-      <div class="balance-title">К оплате</div>
-      <div class="balance-amount" id="toPay">— ₽</div>
-      <div class="balance-sub">Всего активных доставок</div>
-      <div class="balance-count" id="parcelCount">—</div>
-    </div>
+      <!-- CLIENT -->
+      <div class="sb-group" id="menu-client">
+        <div class="sb-group-title">Клиент</div>
+        <button class="sb-item active" data-page="profile">👤 Профиль</button>
+        <button class="sb-item" data-page="deliveries">📦 Мои доставки</button>
+        <button class="sb-item" data-page="support">💬 Поддержка</button>
+      </div>
 
-    <!-- PARCELS -->
-    <div id="parcelList"></div>
+      <!-- OPERATOR -->
+      <div class="sb-group hidden" id="menu-operator">
+        <div class="sb-group-title">Оператор (Якутск)</div>
+        <button class="sb-item" data-page="weigh">⚖️ Взвесить товары</button>
+      </div>
 
-  </section>
+      <!-- ADMIN -->
+      <div class="sb-group hidden" id="menu-admin">
+        <div class="sb-group-title">Администратор</div>
+        <button class="sb-item" data-page="settings">⚙️ Настройки</button>
+        <button class="sb-item" data-page="verify">✅ Верификация</button>
+        <button class="sb-item" data-page="excel">📥 Импорт Excel</button>
+      </div>
 
-  <!-- PROFILE -->
-  <section id="profile" class="page hidden"></section>
+      <div class="sb-bottom">
+        <div class="chip">Китай → Уссурийск → Якутск</div>
+      </div>
+    </aside>
 
-  <!-- SUPPORT -->
-  <section id="support" class="page hidden"></section>
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="topbar-hello" id="hello">Добро пожаловать</div>
+          <div class="topbar-name" id="topName">—</div>
+          <div class="topbar-sub" id="topSub">Личный кабинет</div>
+        </div>
+        <button class="pay-btn" id="openPayBtn">Перейти к оплате</button>
+      </header>
 
-  <!-- TABBAR -->
-  <nav class="tabbar">
-    <button onclick="go('home')" class="active">🏠</button>
-    <button onclick="go('profile')">👤</button>
-    <button onclick="go('support')">💬</button>
-  </nav>
+      <section class="page" id="page-profile"></section>
+      <section class="page hidden" id="page-deliveries"></section>
+      <section class="page hidden" id="page-support"></section>
+      <section class="page hidden" id="page-weigh"></section>
+      <section class="page hidden" id="page-settings"></section>
+      <section class="page hidden" id="page-verify"></section>
+      <section class="page hidden" id="page-excel"></section>
 
-</div>
+      <!-- отдельная страница оплаты -->
+      <section class="page hidden" id="page-payment"></section>
+    </main>
+  </div>
 
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
